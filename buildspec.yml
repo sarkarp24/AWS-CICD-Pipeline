@@ -1,0 +1,18 @@
+    version: 0.2
+
+    phases:
+      install:
+        runtime-versions:
+          # Specify runtime if needed, e.g., python: 3.9
+      pre_build:
+        commands:
+          # Any commands to prepare your files before zipping
+      build:
+        commands:
+          - echo "Zipping files..."
+          - zip -r SampleApp_Linux.zip . # Zips all files in the current directory
+          - echo "Uploading SampleApp_Linux.zip to S3..."
+          - aws s3 cp SampleApp_Linux s3://prodyot-terraform-backend /SampleApp_Linux.zip
+    artifacts:
+      files:
+        - SampleApp_Linux.zip # Optional: if you want CodeBuild to store this as a build artifact
