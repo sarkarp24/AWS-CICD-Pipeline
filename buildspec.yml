@@ -9,11 +9,6 @@
           # Any commands to prepare your files before zipping
       build:
         commands:
-          - echo "Zipping files..."
-          - zip -r SampleApp_Linux.zip . # Zips all files in the current directory
-          - echo "Uploading SampleApp_Linux.zip to S3..."
-          - aws s3 cp SampleApp_Linux.zip s3://prodyot-test /SampleApp_Linux.zip
-	      - aws s3 cp buildspec.yml s3://prodyot-test /buildspec.yml
-    artifacts:
-      files:
-        - SampleApp_Linux.zip # Optional: if you want CodeBuild to store this as a build artifact
+          - echo "Uploading files to S3..."
+          - aws s3 sync . s3://prodyot-terraform-backend --delete
+          - echo "Upload complete."
