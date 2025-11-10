@@ -12,3 +12,6 @@
           - echo "Uploading files to S3..."
           - aws s3 sync . s3://prodyot-demo-cloudfront --delete
           - echo "Upload complete."
+    artifacts:
+      files:
+        - '**/*'
