@@ -10,9 +10,9 @@
       build:
         commands:
           - echo "Uploading files to S3..."
-          - aws s3 sync . s3://prodyot-demo-cloudfront --delete
+          - aws s3 sync . s3://prodyot-test --delete
           - echo "Upload complete."
     artifacts:
       files:
         - '**/*'
-      name: BuildArtifact 
+      name: SourceArtifact 
